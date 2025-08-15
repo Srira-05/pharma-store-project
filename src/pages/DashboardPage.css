@@ -1,0 +1,158 @@
+/* FILE: src/pages/DashboardPage.css */
+
+.dashboard-page {
+  background-color: #f0f4f8;
+}
+
+.dashboard-header {
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e40af;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cart-icon-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.cart-icon {
+  font-size: 1.8rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #e53935;
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.logout-button {
+  background-color: #ef4444;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search-banner {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-banner-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.banner-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 0;
+}
+
+.main-content {
+  padding: 2rem;
+}
+
+/* --- THIS IS THE MOST IMPORTANT PART --- */
+.medicine-grid {
+  display: grid;
+  /* This creates the side-by-side columns */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px; /* This is the space between cards */
+}
+
+.medicine-card-link {
+  text-decoration: none;
+}
+
+.medicine-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.medicine-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.card-description {
+  color: #475569;
+  flex-grow: 1;
+  margin-bottom: 16px;
+}
+
+.card-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #059669;
+  text-align: right;
+}

@@ -1,0 +1,35 @@
+/* FILE: src/components/SearchBar.css */
+
+.search-bar-container {
+  position: relative; /* Needed for positioning the icon */
+  width: 100%;
+  max-width: 600px; /* Limit the width on larger screens */
+  margin: 0 auto; /* This centers the container within the banner */
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 20px 16px 50px; /* Top, Right, Bottom, Left padding */
+  font-size: 1.1rem;
+  border-radius: 9999px; /* This makes it fully rounded */
+  border: 2px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  outline: none; /* Remove the default browser outline */
+  box-sizing: border-box; /* Ensures padding doesn't affect the total width */
+}
+
+.search-input:focus {
+  border-color: #34d399; /* A nice emerald color on focus */
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.3);
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  color: #9ca3af; /* A light gray color for the icon */
+}
