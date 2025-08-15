@@ -23,39 +23,40 @@ const LoginPage = () => {
       return setError('Password must be at least 6 characters long.');
     }
 
-    if (isLoginView) {
-      try {
-        const response = await axios.post('https://pharma-store-project.onrender.com/api/login', {
-          mobileNumber,
-          password,
-        });
+    const apiUrl = isLoginView 
+      ? 'https://pharma-store-project.onrender.com/api/login' 
+      : 'https://pharma-store-project.onrender.com/api/register';
+
+    try {
+      const response = await axios.post(apiUrl, { mobileNumber, password });
+      
+      if (isLoginView) {
         localStorage.setItem('token', response.data.token);
         navigate('/dashboard');
-      } catch (err) {
-        setError(err.response?.data?.message || 'Login failed. Please try again.');
-      }
-    } else {
-      try {
-        const response = await axios.post('https://pharma-store-project.onrender.com/api/register', {
-          mobileNumber,
-          password,
-        });
+      } else {
         setSuccessMessage(response.data.message + " Please log in.");
         setIsLoginView(true);
-      } catch (err) {
-        setError(err.response?.data?.message || 'Registration failed. Please try again.');
       }
+    } catch (err) {
+      setError(err.response?.data?.message || 'An error occurred. Please try again.');
     }
   };
 
   return (
     <div className="login-page-background">
+      {/* This is the list of elements for our animation */}
+      <ul className="floating-bubbles">
+        <li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li>
+      </ul>
+      
       <div className="login-modal">
         <div className="login-content">
           <p className="greeting-text">Hello User,</p>
           <h2 className="welcome-title">
             {isLoginView ? 'Welcome to PharmaCare' : 'Create Your Account'}
           </h2>
+
           <form onSubmit={handleSubmit}>
             <p className="instruction-text">
               {isLoginView ? 'Login with your Mobile Number' : 'Sign up to get started'}
@@ -66,12 +67,15 @@ const LoginPage = () => {
             <div className="input-wrapper">
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input-field" placeholder="Password" />
             </div>
+            
             {error && <p className="error-text">{error}</p>}
             {successMessage && <p className="success-text">{successMessage}</p>}
+
             <button type="submit" className="submit-button">
               {isLoginView ? 'Login' : 'Register'}
             </button>
           </form>
+
           <p className="toggle-view-text">
             {isLoginView ? "Don't have an account?" : "Already have an account?"}
             <button onClick={() => { setIsLoginView(!isLoginView); setError(''); setSuccessMessage(''); }} className="toggle-view-button">
@@ -83,4 +87,5 @@ const LoginPage = () => {
     </div>
   );
 };
+
 export default LoginPage;
