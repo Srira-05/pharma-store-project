@@ -17,7 +17,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get('http://192.168.1.4/api/medicines');
+        const response = await axios.get('https://pharma-store-project.onrender.com');
         const combinedData = response.data.map(serverMed => {
           const localMed = localMedicineData.find(m => m.id === serverMed.id);
           return {

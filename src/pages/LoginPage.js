@@ -29,7 +29,7 @@ const LoginPage = () => {
     if (isLoginView) {
       // --- Handle Login ---
       try {
-        const response = await axios.post('http://192.168.1.4/api/login', {
+        const response = await axios.post('https://pharma-store-project.onrender.com', {
           mobileNumber,
           password,
         });
@@ -42,7 +42,7 @@ const LoginPage = () => {
     } else {
       // --- Handle Registration ---
       try {
-        const response = await axios.post('http://192.168.1.4/api/register', {
+        const response = await axios.post('https://pharma-store-project.onrender.com', {
           mobileNumber,
           password,
         });
