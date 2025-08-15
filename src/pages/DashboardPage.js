@@ -12,12 +12,12 @@ const DashboardPage = () => {
   const [medicines, setMedicines] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
-  const { cartItems } = useCart(); // This line is now correct
+  const { cartItems } = useCart();
 
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get('https://pharma-store-project.onrender.com');
+        const response = await axios.get('https://pharma-store-project.onrender.com/api/medicines');
         const combinedData = response.data.map(serverMed => {
           const localMed = localMedicineData.find(m => m.id === serverMed.id);
           return {
@@ -74,5 +74,4 @@ const DashboardPage = () => {
     </div>
   );
 };
-
 export default DashboardPage;

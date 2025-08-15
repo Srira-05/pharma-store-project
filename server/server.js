@@ -9,11 +9,14 @@ app.use(cors());
 app.use(express.json());
 
 const dbConnectionString = "mongodb+srv://Sriramsundaraneeedi:5R5KmzC8rwJrJ0jS@sriram55.ohjc5qd.mongodb.net/pharmaCareDB?retryWrites=true&w=majority&appName=sriram55";
+
 mongoose.connect(dbConnectionString)
   .then(() => console.log("Successfully connected to MongoDB Atlas!"))
   .catch((error) => console.error("Error connecting to MongoDB Atlas:", error));
 
-const medicineSchema = new mongoose.Schema({ /* ... schema ... */ });
+const medicineSchema = new mongoose.Schema({
+  id: Number, name: String, description: String, price: Number, mrp: Number, country: String, seller: String, offers: [String], imageUrl: String, thumbnails: [String]
+});
 const Medicine = mongoose.model('Medicine', medicineSchema);
 
 const userSchema = new mongoose.Schema({
@@ -25,8 +28,10 @@ const User = mongoose.model('User', userSchema);
 app.get('/api/medicines', async (req, res) => {
   try {
     const medicines = await Medicine.find({});
+    console.log(`Found ${medicines.length} medicines in the database.`);
     res.json(medicines);
   } catch (error) {
+    console.error("Server error while fetching medicines:", error);
     res.status(500).json({ message: "Error fetching medicines." });
   }
 });
@@ -68,10 +73,6 @@ app.post('/api/login', async (req, res) => {
 });
 
 const PORT = 5000;
-
-// --- THIS IS THE FIX ---
-// We add '0.0.0.0' to tell the server to listen on all available network connections,
-// not just localhost. This allows your phone to connect.
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT} and is accessible on your network.`);
 });
