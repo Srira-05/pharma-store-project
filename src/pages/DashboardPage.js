@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import MedicineCard from '../components/MedicineCard';
 import SearchBar from '../components/SearchBar';
+import Footer from '../components/Footer'; // <-- IMPORT THE NEW FOOTER
 import './DashboardPage.css';
 import bannerImage from '../pictures/medicine-banner.png';
 import { medicineData as localMedicineData } from '../data/medicineData';
@@ -47,7 +48,7 @@ const DashboardPage = () => {
   return (
     <div className="dashboard-page">
       <header className="dashboard-header">
-          <h1 className="header-title">PharmaCare Dashboard</h1>
+          <h1 className="header-title">PharmaCare</h1>
           <div className="header-actions">
             <Link to="/cart" className="cart-icon-link">
               <span className="cart-icon">🛒</span>
@@ -65,13 +66,33 @@ const DashboardPage = () => {
       </div>
 
       <main className="main-content">
-        <div className="medicine-grid">
-          {filteredMedicines.map(med => (
-            <MedicineCard key={med._id || med.id} medicine={med} />
-          ))}
-        </div>
+        {/* --- NEW CATEGORY SECTION --- */}
+        <section className="category-section">
+            <h2 className="section-title">Shop by Category</h2>
+            <div className="category-grid">
+                <div className="category-card"><span>💊</span><p>Medicines</p></div>
+                <div className="category-card"><span>👶</span><p>Baby Care</p></div>
+                <div className="category-card"><span>👩‍⚕️</span><p>Personal Care</p></div>
+                <div className="category-card"><span>💪</span><p>Health & Fitness</p></div>
+                <div className="category-card"><span>🏠</span><p>Home Care</p></div>
+            </div>
+        </section>
+
+        {/* --- UPDATED PRODUCTS SECTION --- */}
+        <section className="products-section">
+            <h2 className="section-title">Featured Products</h2>
+            <div className="medicine-grid">
+              {filteredMedicines.map(med => (
+                <MedicineCard key={med._id || med.id} medicine={med} />
+              ))}
+            </div>
+        </section>
       </main>
+
+      {/* --- NEW FOOTER --- */}
+      <Footer />
     </div>
   );
 };
+
 export default DashboardPage;
