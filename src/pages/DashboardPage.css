@@ -1,5 +1,3 @@
-/* FILE: src/pages/DashboardPage.css */
-
 .dashboard-page {
   background-color: #f0f4f8;
 }
@@ -17,7 +15,7 @@
 }
 
 .header-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #1e40af;
 }
@@ -95,14 +93,65 @@
 
 .main-content {
   padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* --- THIS IS THE MOST IMPORTANT PART --- */
+/* --- STYLES FOR NEW SECTIONS --- */
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #334155;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.category-section {
+  margin-bottom: 4rem;
+}
+
+.category-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.category-card span {
+  font-size: 3rem;
+}
+
+.category-card p {
+  margin: 0.5rem 0 0 0;
+  font-weight: 600;
+  color: #334155;
+}
+
+.products-section {
+  padding-bottom: 4rem; /* Add space before the footer */
+}
+/* --- END OF NEW STYLES --- */
+
 .medicine-grid {
   display: grid;
-  /* This creates the side-by-side columns */
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 24px; /* This is the space between cards */
+  gap: 24px;
 }
 
 .medicine-card-link {
