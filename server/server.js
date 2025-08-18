@@ -15,7 +15,7 @@ mongoose.connect(dbConnectionString)
   .catch((error) => console.error("Error connecting to MongoDB Atlas:", error));
 
 const medicineSchema = new mongoose.Schema({
-  id: Number, name: String, description: String, price: Number, mrp: Number, country: String, seller: String, offers: [String], imageUrl: String, thumbnails: [String]
+  id: Number, name: String, description: String, price: Number, mrp: Number, category: String, country: String, seller: String, offers: [String], imageUrl: String, thumbnails: [String]
 });
 const Medicine = mongoose.model('Medicine', medicineSchema);
 

@@ -6,32 +6,21 @@ import DashboardPage from './pages/DashboardPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import CategoryPage from './pages/CategoryPage';
 
 function App() {
   return (
     <CartProvider>
       <Router>
         <Routes>
-          {/* The login page is public */}
           <Route path="/" element={<LoginPage />} />
-
-          {/* These routes are now protected */}
-          <Route 
-            path="/dashboard" 
-            element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} 
-          />
-          <Route 
-            path="/product/:id" 
-            element={<ProtectedRoute><ProductDetailPage /></ProtectedRoute>} 
-          />
-          <Route 
-            path="/cart" 
-            element={<ProtectedRoute><CartPage /></ProtectedRoute>} 
-          />
+          <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+          <Route path="/product/:id" element={<ProtectedRoute><ProductDetailPage /></ProtectedRoute>} />
+          <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
+          <Route path="/category/:categoryName" element={<ProtectedRoute><CategoryPage /></ProtectedRoute>} />
         </Routes>
       </Router>
     </CartProvider>
   );
 }
-
 export default App;

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import MedicineCard from '../components/MedicineCard';
 import SearchBar from '../components/SearchBar';
-import Footer from '../components/Footer'; // <-- IMPORT THE NEW FOOTER
+import Footer from '../components/Footer';
 import './DashboardPage.css';
 import bannerImage from '../pictures/medicine-banner.png';
 import { medicineData as localMedicineData } from '../data/medicineData';
@@ -66,19 +66,17 @@ const DashboardPage = () => {
       </div>
 
       <main className="main-content">
-        {/* --- NEW CATEGORY SECTION --- */}
         <section className="category-section">
             <h2 className="section-title">Shop by Category</h2>
             <div className="category-grid">
-                <div className="category-card"><span>💊</span><p>Medicines</p></div>
-                <div className="category-card"><span>👶</span><p>Baby Care</p></div>
-                <div className="category-card"><span>👩‍⚕️</span><p>Personal Care</p></div>
-                <div className="category-card"><span>💪</span><p>Health & Fitness</p></div>
-                <div className="category-card"><span>🏠</span><p>Home Care</p></div>
+                <Link to="/category/medicines" className="category-card"><span>💊</span><p>Medicines</p></Link>
+                <Link to="/category/baby-care" className="category-card"><span>👶</span><p>Baby Care</p></Link>
+                <Link to="/category/personal-care" className="category-card"><span>👩‍⚕️</span><p>Personal Care</p></Link>
+                <Link to="/category/health-fitness" className="category-card"><span>💪</span><p>Health & Fitness</p></Link>
+                <Link to="/category/home-care" className="category-card"><span>🏠</span><p>Home Care</p></Link>
             </div>
         </section>
 
-        {/* --- UPDATED PRODUCTS SECTION --- */}
         <section className="products-section">
             <h2 className="section-title">Featured Products</h2>
             <div className="medicine-grid">
@@ -88,11 +86,8 @@ const DashboardPage = () => {
             </div>
         </section>
       </main>
-
-      {/* --- NEW FOOTER --- */}
       <Footer />
     </div>
   );
 };
-
 export default DashboardPage;

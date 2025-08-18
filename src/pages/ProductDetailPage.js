@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'; // Added useEffect
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import axios from 'axios'; // Import axios to get the latest data
 import './ProductDetailPage.css';
-import { medicineData as localMedicineData } from '../data/medicineData'; // For local images
+import { medicineData as localMedicineData } from '../data/medicineData';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -12,7 +11,6 @@ const ProductDetailPage = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    // Find the medicine data from our local file to get the images
     const localMed = localMedicineData.find(m => m.id == id);
     if (localMed) {
         setMedicine(localMed);
@@ -20,13 +18,11 @@ const ProductDetailPage = () => {
     }
   }, [id]);
 
-
   const handleAddToCart = () => {
     addToCart(medicine);
     alert(`${medicine.name} has been added to your cart!`);
   };
 
-  // Show a loading message while we wait for the data
   if (!medicine) {
     return <div className="pdp-page"><p>Loading product...</p></div>;
   }
@@ -38,7 +34,6 @@ const ProductDetailPage = () => {
         <div className="header-nav">
           <Link to="/dashboard">Health Store</Link>
           <Link to="/dashboard">Pharmacy</Link>
-          <Link to="/dashboard">Doctors</Link>
         </div>
       </header>
       <main className="pdp-main-content">
@@ -85,5 +80,4 @@ const ProductDetailPage = () => {
     </div>
   );
 };
-
 export default ProductDetailPage;

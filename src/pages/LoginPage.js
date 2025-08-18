@@ -44,7 +44,6 @@ const LoginPage = () => {
 
   return (
     <div className="login-page-background">
-      {/* This is the list of elements for our animation */}
       <ul className="floating-bubbles">
         <li></li><li></li><li></li><li></li><li></li>
         <li></li><li></li><li></li><li></li><li></li>
@@ -56,7 +55,6 @@ const LoginPage = () => {
           <h2 className="welcome-title">
             {isLoginView ? 'Welcome to PharmaCare' : 'Create Your Account'}
           </h2>
-
           <form onSubmit={handleSubmit}>
             <p className="instruction-text">
               {isLoginView ? 'Login with your Mobile Number' : 'Sign up to get started'}
@@ -67,15 +65,12 @@ const LoginPage = () => {
             <div className="input-wrapper">
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input-field" placeholder="Password" />
             </div>
-            
             {error && <p className="error-text">{error}</p>}
             {successMessage && <p className="success-text">{successMessage}</p>}
-
             <button type="submit" className="submit-button">
               {isLoginView ? 'Login' : 'Register'}
             </button>
           </form>
-
           <p className="toggle-view-text">
             {isLoginView ? "Don't have an account?" : "Already have an account?"}
             <button onClick={() => { setIsLoginView(!isLoginView); setError(''); setSuccessMessage(''); }} className="toggle-view-button">
@@ -87,5 +82,4 @@ const LoginPage = () => {
     </div>
   );
 };
-
 export default LoginPage;
